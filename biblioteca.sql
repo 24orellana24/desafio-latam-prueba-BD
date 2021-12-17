@@ -27,6 +27,8 @@ CREATE TABLE autores (
   PRIMARY KEY (codigo)
 );
 
+\d autores
+
 -- 1.1.b Ingreso de registro a la tabla "autores" normalizada
 INSERT INTO autores (nombre, apellido, ano_nacimiento, ano_muerte) VALUES ('Andrés', 'Ulloa', 1982, NULL);
 INSERT INTO autores (nombre, apellido, ano_nacimiento, ano_muerte) VALUES ('Sergio', 'Mardones', 1950, 2012);
@@ -45,6 +47,8 @@ CREATE TABLE libros (
 
   PRIMARY KEY (isbn)
 );
+
+\d libros
 
 -- 1.2.b Ingreso de registro a la tabla "libros" normalizada
 INSERT INTO libros (isbn, titulo, paginas) VALUES ('111-1111111-111', 'CUENTOS DE TERROR', 344);
@@ -67,6 +71,8 @@ CREATE TABLE tipo_autores (
 
 );
 
+\d tipo_autores
+
 -- 1.3.b Ingreso de registro a la tabla "tipo de autores"
 INSERT INTO tipo_autores (tipo_autor, id_codigo_autor, id_isbn_libro) VALUES ('PRINCIPAL', 1, '222-2222222-222');
 INSERT INTO tipo_autores (tipo_autor, id_codigo_autor, id_isbn_libro) VALUES ('PRINCIPAL', 2, '333-3333333-333');
@@ -85,6 +91,8 @@ CREATE TABLE comunas (
   PRIMARY KEY (id)
 
 );
+
+\d comunas
 
 -- 1.4.b Ingreso de registro a la tabla "comuna"
 INSERT INTO comunas (id, nombre) VALUES (1, 'Santiago');
@@ -105,6 +113,8 @@ CREATE TABLE socios (
 
   FOREIGN KEY (id_comuna) REFERENCES comunas (id)
 );
+
+\d socios
 
 -- 1.5.b Ingreso de registro a la tabla "socios"
 INSERT INTO socios (rut, nombre, apellido, direccion, telefono, id_comuna) VALUES ('1111111-1', 'JUAN', 'SOTO', 'AVENIDA 1', 911111111, 1);
@@ -127,6 +137,8 @@ CREATE TABLE historial (
   FOREIGN KEY (id_rut_socio) REFERENCES socios (rut),
   FOREIGN KEY (id_isbn_libro) REFERENCES libros (isbn)
 );
+
+\d historial
 
 -- 1.6.b Ingreso de registro a la tabla "socios"
 INSERT INTO historial (fecha_prestamo, fecha_devolucion, id_rut_socio, id_isbn_libro) VALUES ('2020-01-20', '2020-01-27', '1111111-1', '111-1111111-111');
