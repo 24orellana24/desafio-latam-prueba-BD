@@ -210,8 +210,10 @@ CREATE TEMP TABLE tmp_multa AS
 SELECT
   nombre,
   apellido,
-  fecha_prestamo, (fecha_prestamo + 7) AS fecha_vencimiento,
-  fecha_devolucion, (fecha_devolucion - (fecha_prestamo + 7)) AS dias_atraso
+  fecha_prestamo,
+  (fecha_prestamo + 7) AS fecha_vencimiento,
+  fecha_devolucion,
+  (fecha_devolucion - (fecha_prestamo + 7)) AS dias_atraso
 FROM historial
 INNER JOIN socios ON historial.id_rut_socio = socios.rut;
 
