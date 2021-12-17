@@ -217,7 +217,8 @@ SELECT
 FROM historial
 INNER JOIN socios ON historial.id_rut_socio = socios.rut;
 
-SELECT *, (dias_atraso * 100) AS multa FROM tmp_multa
+SELECT *, (dias_atraso * 100) AS multa
+FROM tmp_multa
 WHERE dias_atraso > 0
 ORDER BY dias_atraso DESC;
 
